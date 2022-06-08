@@ -52,8 +52,11 @@ int CheckOS(void)
     int os = get_os();
     if (!PLAIN_DOS(os))
     {
+       // Bypass windows check, untested
        if (IN_WINDOWS(os))
-          strcpy(message, "I just simply refuse to run in windows!");
+          strcpy(message, "You really shouldn't run this on Windows.");
+          ErrorMessage(message);
+          return TRUE;
        else
        {
           strcpy(message, "This program cannot be run in ");
